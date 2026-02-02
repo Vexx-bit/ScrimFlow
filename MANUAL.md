@@ -70,37 +70,65 @@ npm start
 
 ---
 
-## 🏟️ 4. Future: Lobby Management Flow (Preview)
+## 🏟️ 4. Phase 2: Lobby Management Flow
 
-We have scaffolded the `LobbyManager` for Phase 2. The workflow will be:
+**\*Prerequisites:** You must be a Server Administrator to use `/scrim`.\*
 
-1.  **Admin:** `/scrim open region:EU format:SOLO`
-2.  **Players:** `/checkin` (Only for registered users)
-3.  **Bot:** Checks if player is registered. Adds to lobby.
-4.  **Admin:** `/scrim close` -> `/scrim distribute [CODE]`
-5.  **Bot:** Sends the code to all checked-in players via DM.
+### A. Hosting a Scrim
 
-This prevents randoms from getting the code and ensures everyone is registered.
+1.  **Start the Lobby**:
+
+    ```text
+    /scrim open format:SOLO region:EU
+    ```
+
+    - This posts a **Live Dashboard** embed in the channel.
+    - Players can now use `/checkin`.
+
+2.  **Monitor**:
+    - Watch the "Players Checked In" counter update in real-time as users join.
+
+3.  **Lock the Lobby** (Optional):
+
+    ```text
+    /scrim close
+    ```
+
+    - Stops new players from joining. The embed turns Red 🔴.
+
+4.  **Send Codes**:
+    ```text
+    /scrim distribute code:123-456
+    ```
+
+    - The bot will immediately DM the code `123-456` to all checked-in players.
+    - The lobby automatically ends after distribution.
+
+### B. Player Experience
+
+1.  Player sees the "🟢 OPEN" embed.
+2.  Player runs `/checkin`.
+3.  Bot confirms: "✅ You are in the queue."
+4.  Lobby Embed updates count: `1/100`.
 
 ---
 
 ## 🧪 5. Updated Test Cases
 
-| Case ID  | Test Description | Input Action  | Expected Result                                   | Pass/Fail |
-| :------: | ---------------- | ------------- | ------------------------------------------------- | :-------: |
-| **A-01** | **Registration** | `/register`   | Success Embed.                                    |    ⬜     |
-| **A-02** | **Unregister**   | `/unregister` | Warning Embed -> Click Yes -> "Account Unlinked". |    ⬜     |
-| **B-01** | **Ping Check**   | `/ping`       | "Connection Strength" Embed.                      |    ⬜     |
-| **B-02** | **Region Test**  | Select Region | Gamer-friendly ping stats (e.g. "Stable").        |    ⬜     |
+| Case ID  | Test Description    | Input Action        | Expected Result                                 | Pass/Fail |
+| :------: | ------------------- | ------------------- | ----------------------------------------------- | :-------: |
+| **A-01** | **Registration**    | `/register`         | Success Embed.                                  |    ⬜     |
+| **A-02** | **Unregister**      | `/unregister`       | Account Unlinked.                               |    ⬜     |
+| **B-01** | **Ping Check**      | `/ping`             | "Signal Strength" Embed.                        |    ⬜     |
+| **C-01** | **Start Lobby**     | `/scrim open`       | "🟢 Scrim Lobby" Embed appears.                 |    ⬜     |
+| **C-02** | **Player Check-in** | `/checkin`          | Embed count increases to 1/100.                 |    ⬜     |
+| **C-03** | **Distribute**      | `/scrim distribute` | **CHECK YOUR DM.** You should receive the code. |    ⬜     |
 
 ---
 
-## 🔒 6. Channel Permissions (#register-here)
+## 🔒 6. Channel Permissions
 
-To restrict the bot to `#register-here`:
+**Recommendation:**
 
-1. Go to **Server Settings** > **Integrations** > **Bots and Apps**.
-2. Select **ScrimFlow**.
-3. Under "Commands", find `/register`.
-4. Allow: `#register-here`.
-5. Deny: `All Channels`.
+- `#register-here` channel: Allow `/register`, `/unregister`.
+- `#scrim-announcements` channel: Allow `/scrim`, `/checkin`.

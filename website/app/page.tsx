@@ -12,7 +12,7 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <div className="relative h-12 w-48 md:w-64">
               <Image 
-                src="/brand-logo-full.png" 
+                src="/brand-logo-horizontal.png" 
                 alt="ScrimFlow Logo"
                 fill
                 className="object-contain object-left"
@@ -103,7 +103,7 @@ export default function Home() {
       <footer className="py-16 border-t border-white/10 text-center text-gray-500 text-sm bg-[#05050A]">
         <div className="flex flex-col items-center justify-center gap-6 mb-8">
            <div className="relative h-16 w-64 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-             <Image src="/brand-logo-full.png" alt="Logo" fill className="object-contain" />
+             <Image src="/brand-logo-horizontal.png" alt="Logo" fill className="object-contain" />
            </div>
            <div className="flex gap-6 text-gray-400">
              <Link href="#" className="hover:text-[#00F0FF]">Terms of Service</Link>

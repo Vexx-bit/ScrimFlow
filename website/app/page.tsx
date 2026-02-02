@@ -1,6 +1,7 @@
 
 import Link from 'next/link';
-import { Terminal, Shield, Zap, Users, Trophy, Code } from 'lucide-react';
+import Image from 'next/image';
+import { Shield, Zap, Trophy, Code } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -9,8 +10,15 @@ export default function Home() {
       <nav className="fixed w-full z-50 border-b border-white/10 bg-[#090912]/80 backdrop-blur-md">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Terminal className="h-6 w-6 text-[#00F0FF]" />
-            <span className="text-xl font-bold tracking-tight">ScrimFlow</span>
+            <div className="relative h-8 w-32 md:w-40">
+              <Image 
+                src="/brand-logo-full.png" 
+                alt="ScrimFlow Logo"
+                fill
+                className="object-contain object-left"
+                priority
+              />
+            </div>
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
             <Link href="#features" className="hover:text-white transition-colors">Features</Link>
@@ -19,7 +27,7 @@ export default function Home() {
           </div>
           <Link 
             href="https://discord.com"
-            className="bg-[#00F0FF] text-black px-6 py-2.5 rounded-full text-sm font-bold hover:bg-[#00c8d6] transition-all"
+            className="bg-[#00F0FF] text-black px-6 py-2.5 rounded-full text-sm font-bold hover:bg-[#00c8d6] transition-all focus:ring-2 focus:ring-[#00A3FF] focus:ring-offset-2 focus:ring-offset-[#090912]"
           >
             Add to Discord
           </Link>
@@ -27,18 +35,18 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-48 md:pb-32 container mx-auto px-6 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#00F0FF]/30 bg-[#00F0FF]/5 text-[#00F0FF] text-xs font-medium mb-8 animate-fade-in">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00F0FF] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00F0FF]"></span>
-          </span>
-          Phase 2 Live Now
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 container mx-auto px-6 text-center overflow-hidden">
+        {/* Background Glow Effect */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#00F0FF]/10 rounded-full blur-[120px] -z-10"></div>
+
+        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#00F0FF]/30 bg-[#00F0FF]/5 text-[#00F0FF] text-sm font-medium mb-10 animate-fade-in hover:bg-[#00F0FF]/10 transition-colors cursor-default">
+          <Image src="/brand-icon.png" alt="Icon" width={20} height={20} className="rounded-sm" />
+          <span>Phase 2 Live Now</span>
         </div>
         
         <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
           Professional Scrims <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#00A3FF]">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#00A3FF] drop-shadow-[0_0_30px_rgba(0,240,255,0.3)]">
             Zero Latency
           </span>
         </h1>
@@ -51,9 +59,9 @@ export default function Home() {
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <Link 
             href="/docs"
-            className="w-full md:w-auto px-8 py-4 bg-white text-black rounded-lg font-bold hover:bg-gray-200 transition-all flex items-center justify-center gap-2"
+            className="w-full md:w-auto px-8 py-4 bg-white text-black rounded-lg font-bold hover:bg-gray-200 transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
           >
-            <Code className="h-4 w-4" />
+            <Code className="h-5 w-5" />
             Read Documentation
           </Link>
           <Link 
@@ -90,9 +98,8 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-12 border-t border-white/10 text-center text-gray-500 text-sm">
-        <div className="flex items-center justify-center gap-2 mb-4">
-           <Terminal className="h-5 w-5 opacity-50" />
-           <span className="font-semibold text-gray-300">ScrimFlow</span>
+        <div className="flex items-center justify-center gap-3 mb-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+           <Image src="/brand-logo-full.png" alt="Logo" width={100} height={25} className="object-contain" />
         </div>
         <p>© 2026 ScrimFlow Technologies. Built for Competitive Fortnite.</p>
       </footer>

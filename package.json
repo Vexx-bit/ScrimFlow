@@ -1,0 +1,32 @@
+{
+  "name": "scrimflow",
+  "version": "1.0.0",
+  "description": "Premium Fortnite Scrim Manager Discord Bot",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "register": "ts-node src/deploy-commands.ts"
+  },
+  "keywords": [
+    "discord",
+    "fortnite",
+    "esports",
+    "scrim",
+    "bot"
+  ],
+  "author": "ScrimFlow Team",
+  "license": "ISC",
+  "dependencies": {
+    "sql.js": "^1.10.3",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "nodemon": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

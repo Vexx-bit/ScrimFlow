@@ -1,146 +1,257 @@
-
-import Link from 'next/link';
-import { ArrowLeft, BookOpen, Terminal, Shield, Cpu } from 'lucide-react';
+import Link from "next/link";
+import { BookOpen, Terminal, Shield, Cpu, Bot, Wrench } from "lucide-react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function DocsPage() {
   return (
     <div className="min-h-screen bg-[#090912] text-white selection:bg-[#00F0FF] selection:text-black">
-      {/* Navbar */}
-      <nav className="border-b border-white/10 bg-[#090912]/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <Terminal className="h-5 w-5 text-[#00F0FF]" />
-              <span className="font-bold tracking-tight">ScrimFlow Docs</span>
-            </Link>
-          </div>
-          <Link href="/" className="text-sm text-gray-400 hover:text-white flex items-center gap-2">
-            <ArrowLeft className="h-4 w-4" /> Back to Home
-          </Link>
-        </div>
-      </nav>
+      <Navbar />
 
-      <div className="container mx-auto px-6 py-12 flex flex-col md:flex-row gap-12">
+      <div className="container mx-auto px-6 pt-32 pb-12 flex flex-col md:flex-row gap-12">
         {/* Sidebar */}
         <aside className="md:w-64 shrink-0">
-          <div className="sticky top-24 space-y-8">
+          <div className="sticky top-28 space-y-8">
             <DocSection title="Getting Started">
-              <DocLink href="#quick-start">Quick Start</DocLink>
-              <DocLink href="#commands">Command Reference</DocLink>
+              <DocLink href="#overview">Overview</DocLink>
+              <DocLink href="#adding-a-bot">Adding a Bot</DocLink>
             </DocSection>
-            <DocSection title="Core Features">
-              <DocLink href="#registration">Registration Flow</DocLink>
-              <DocLink href="#scrims">Hosting Scrims</DocLink>
-              <DocLink href="#ping">Ping Diagnostic</DocLink>
+            <DocSection title="Bot Templates">
+              <DocLink href="#scrimflow-bot">ScrimFlow Bot</DocLink>
+              <DocLink href="#guardian-bot">Guardian (Moderation)</DocLink>
+              <DocLink href="#ticketflow-bot">TicketFlow (Tickets)</DocLink>
             </DocSection>
-            <DocSection title="Security">
-              <DocLink href="#permissions">Permissions</DocLink>
+            <DocSection title="Custom Bots">
+              <DocLink href="#commissioning">Commissioning</DocLink>
+              <DocLink href="#what-we-need">What We Need From You</DocLink>
+            </DocSection>
+            <DocSection title="Policies">
+              <DocLink href="/privacy">Privacy Policy</DocLink>
+              <DocLink href="/terms">Terms of Service</DocLink>
             </DocSection>
           </div>
         </aside>
 
         {/* Content */}
         <main className="flex-1 max-w-3xl space-y-16">
-          <section id="quick-start">
-             <div className="flex items-center gap-3 mb-6">
-                <BookOpen className="h-8 w-8 text-[#00F0FF]" />
-                <h1 className="text-4xl font-bold">Operator's Manual</h1>
-             </div>
-             <p className="text-xl text-gray-400 leading-relaxed mb-8">
-               Complete guide to operating the ScrimFlow bot v1.1.0 (Phase 2).
-             </p>
-             
-             <div className="p-6 rounded-xl bg-[#12121F] border border-white/10">
-               <h3 className="font-bold text-white mb-4">Command Summary</h3>
-               <div className="grid grid-cols-2 gap-4 text-sm">
-                 <div className="col-span-1 text-[#00F0FF] font-mono">/register</div>
-                 <div className="text-gray-400">Create player profile</div>
-                 <div className="col-span-1 text-[#00F0FF] font-mono">/scrim open</div>
-                 <div className="text-gray-400">Start new lobby (Admin)</div>
-                 <div className="col-span-1 text-[#00F0FF] font-mono">/checkin</div>
-                 <div className="text-gray-400">Join active lobby</div>
-                 <div className="col-span-1 text-[#00F0FF] font-mono">/ping</div>
-                 <div className="text-gray-400">Test connection</div>
-               </div>
-             </div>
+          {/* Overview */}
+          <section id="overview">
+            <div className="flex items-center gap-3 mb-6">
+              <BookOpen className="h-8 w-8 text-[#00F0FF]" />
+              <h1 className="text-4xl font-bold">Documentation</h1>
+            </div>
+            <p className="text-xl text-gray-400 leading-relaxed mb-8">
+              Everything you need to know about ScrimFlow&apos;s Discord bot platform — from adding a template bot to commissioning a fully custom solution.
+            </p>
+
+            <div className="p-6 rounded-xl bg-[#12121F] border border-white/10">
+              <h3 className="font-bold text-white mb-4">Quick Links</h3>
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <Link href="/bots" className="text-[#00F0FF] font-mono hover:underline">
+                  /bots
+                </Link>
+                <span className="text-gray-400">Browse & add bots</span>
+                <Link href="/bots#custom" className="text-[#00F0FF] font-mono hover:underline">
+                  /bots#custom
+                </Link>
+                <span className="text-gray-400">Commission a custom bot</span>
+                <Link href="/privacy" className="text-[#00F0FF] font-mono hover:underline">
+                  /privacy
+                </Link>
+                <span className="text-gray-400">Privacy Policy</span>
+                <Link href="/terms" className="text-[#00F0FF] font-mono hover:underline">
+                  /terms
+                </Link>
+                <span className="text-gray-400">Terms of Service</span>
+              </div>
+            </div>
           </section>
 
-          <section id="scrims" className="space-y-6">
+          {/* Adding a Bot */}
+          <section id="adding-a-bot" className="space-y-6">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              <Bot className="h-6 w-6 text-[#00F0FF]" />
+              Adding a Bot to Your Server
+            </h2>
+            <p className="text-gray-400">
+              Every template bot on our platform can be added to your server in seconds. Here&apos;s the flow:
+            </p>
+
+            <Step number={1} title="Browse the Collection">
+              <p className="text-gray-400 mb-2">
+                Head to <Link href="/bots" className="text-[#00F0FF] hover:underline">/bots</Link> and click on any bot card to see its full feature list and pricing.
+              </p>
+            </Step>
+
+            <Step number={2} title='Click "Add to Discord"'>
+              <p className="text-gray-400">
+                This opens the standard Discord OAuth2 authorization screen. Select the server where you want the bot, review permissions, and click <strong className="text-white">Authorize</strong>.
+              </p>
+            </Step>
+
+            <Step number={3} title="Configure & Go">
+              <p className="text-gray-400">
+                Most bots work out of the box. Use the bot&apos;s <code className="bg-white/10 rounded px-1">/setup</code> command for initial configuration (setting channels, roles, etc.).
+              </p>
+            </Step>
+          </section>
+
+          {/* ScrimFlow Bot */}
+          <section id="scrimflow-bot" className="space-y-6">
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <Cpu className="h-6 w-6 text-[#00FF88]" />
-              Hosting a Scrim (Admin)
+              ScrimFlow Bot — Competitive Scrims
             </h2>
-            <p className="text-gray-400">The core loop of ScrimFlow is designed for speed. Follow these steps to host a match.</p>
+            <p className="text-gray-400">
+              Our flagship bot for esports communities. Automate lobby management, check-ins, and match-code distribution.
+            </p>
 
-            <Step number={1} title="Open the Lobby">
-              <p className="text-gray-400 mb-2">Run the following command to create a live dashboard embed:</p>
-              <CodeBlock>/scrim open format:SOLO region:EU</CodeBlock>
-            </Step>
-
-            <Step number={2} title="Monitor Check-ins">
-              <p className="text-gray-400">
-                Players will run <code className="bg-white/10 rounded px-1">/checkin</code>. 
-                Watch the embed counter update in real-time (e.g., <span className="text-[#00F0FF]">Players: 42/100</span>).
-              </p>
-            </Step>
-
-            <Step number={3} title="Lock & Distribute">
-              <p className="text-gray-400 mb-2">When you are ready to start, close the lobby and send the code:</p>
-              <CodeBlock>/scrim close</CodeBlock>
-              <CodeBlock>/scrim distribute code:X9Y-22B</CodeBlock>
-              <p className="text-gray-400 mt-2 text-sm italic">
-                *The bot will DM the code to all confirmed players instantly.*
-              </p>
-            </Step>
+            <div className="p-6 rounded-xl bg-[#12121F] border border-white/10">
+              <h3 className="font-bold text-white mb-4">Command Reference</h3>
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="text-[#00F0FF] font-mono">/register</div>
+                <div className="text-gray-400">Create player profile</div>
+                <div className="text-[#00F0FF] font-mono">/scrim open</div>
+                <div className="text-gray-400">Start new lobby (Admin)</div>
+                <div className="text-[#00F0FF] font-mono">/scrim close</div>
+                <div className="text-gray-400">Lock lobby</div>
+                <div className="text-[#00F0FF] font-mono">/scrim distribute</div>
+                <div className="text-gray-400">DM match code to players</div>
+                <div className="text-[#00F0FF] font-mono">/checkin</div>
+                <div className="text-gray-400">Join active lobby</div>
+                <div className="text-[#00F0FF] font-mono">/ping</div>
+                <div className="text-gray-400">Test connection</div>
+              </div>
+            </div>
           </section>
 
-          <section id="security" className="space-y-6">
+          {/* Guardian Bot */}
+          <section id="guardian-bot" className="space-y-6">
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <Shield className="h-6 w-6 text-[#FFAA00]" />
-              Security & Permissions
+              Guardian — Moderation Suite
             </h2>
-            <div className="space-y-4">
-              <h3 className="font-bold text-white">Recommended Channel Setup</h3>
-              <ul className="space-y-2 text-gray-400 list-disc pl-5">
-                <li>
-                  <strong className="text-white">#register-here:</strong> Allow 
-                  <code className="mx-2 bg-white/10 rounded px-1 text-xs">/register</code>
-                  <code className="bg-white/10 rounded px-1 text-xs">/unregister</code>
-                </li>
-                <li>
-                  <strong className="text-white">#scrim-announcements:</strong> Allow
-                  <code className="mx-2 bg-white/10 rounded px-1 text-xs">/scrim</code>
-                  <code className="bg-white/10 rounded px-1 text-xs">/checkin</code>
-                </li>
+            <p className="text-gray-400">
+              AI-powered moderation with raid protection, custom warning systems, and detailed audit logs.
+            </p>
+            <div className="p-6 rounded-xl bg-[#12121F] border border-white/10">
+              <h3 className="font-bold text-white mb-4">Key Commands</h3>
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="text-[#00F0FF] font-mono">/warn @user</div>
+                <div className="text-gray-400">Issue a warning</div>
+                <div className="text-[#00F0FF] font-mono">/mute @user 10m</div>
+                <div className="text-gray-400">Timed mute</div>
+                <div className="text-[#00F0FF] font-mono">/audit @user</div>
+                <div className="text-gray-400">View moderation history</div>
+                <div className="text-[#00F0FF] font-mono">/automod setup</div>
+                <div className="text-gray-400">Configure auto-moderation</div>
+              </div>
+            </div>
+          </section>
+
+          {/* TicketFlow Bot */}
+          <section id="ticketflow-bot" className="space-y-6">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              <Terminal className="h-6 w-6 text-[#C084FC]" />
+              TicketFlow — Support Tickets
+            </h2>
+            <p className="text-gray-400">
+              Thread-based support tickets with staff assignment, priority levels, and transcript exports.
+            </p>
+            <div className="p-6 rounded-xl bg-[#12121F] border border-white/10">
+              <h3 className="font-bold text-white mb-4">Key Commands</h3>
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="text-[#00F0FF] font-mono">/ticket new</div>
+                <div className="text-gray-400">Create a ticket</div>
+                <div className="text-[#00F0FF] font-mono">/ticket close</div>
+                <div className="text-gray-400">Close & transcript</div>
+                <div className="text-[#00F0FF] font-mono">/ticket assign @staff</div>
+                <div className="text-gray-400">Assign to staff member</div>
+                <div className="text-[#00F0FF] font-mono">/ticket panel</div>
+                <div className="text-gray-400">Post a ticket button panel</div>
+              </div>
+            </div>
+          </section>
+
+          {/* Commissioning */}
+          <section id="commissioning" className="space-y-6">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              <Wrench className="h-6 w-6 text-[#FF6B6B]" />
+              Custom Bot Commissions
+            </h2>
+            <p className="text-gray-400">
+              Need something our templates don&apos;t cover? We build fully custom, branded Discord bots to your exact specifications.
+            </p>
+
+            <div className="p-6 rounded-xl bg-[#12121F] border border-white/10 space-y-4">
+              <h3 className="font-bold text-white">Pricing</h3>
+              <ul className="list-disc pl-5 text-gray-400 space-y-1 text-sm">
+                <li>Basic custom bots start at <strong className="text-white">$149</strong></li>
+                <li>Complex integrations (APIs, databases, dashboards) quoted individually</li>
+                <li>Monthly hosting & support included for the first 3 months</li>
               </ul>
             </div>
           </section>
+
+          {/* What We Need */}
+          <section id="what-we-need" className="space-y-6">
+            <h2 className="text-2xl font-bold">What We Need From You</h2>
+            <p className="text-gray-400">
+              To kick off a commission, email{" "}
+              <Link href="mailto:commissions@scrimflow.gg" className="text-[#00F0FF] hover:underline">
+                commissions@scrimflow.gg
+              </Link>{" "}
+              with:
+            </p>
+            <ul className="list-disc pl-5 text-gray-400 space-y-2 text-sm">
+              <li>A description of the bot&apos;s purpose and target audience</li>
+              <li>A list of desired features / commands</li>
+              <li>Branding assets (name, avatar, color scheme)</li>
+              <li>Any third-party integrations (APIs, databases, etc.)</li>
+              <li>Your budget range and desired timeline</li>
+            </ul>
+            <p className="text-gray-400 text-sm">
+              We&apos;ll respond within 24 hours with a detailed scope and quote.
+            </p>
+          </section>
         </main>
       </div>
+
+      <Footer />
     </div>
   );
 }
 
-function DocSection({ title, children }: { title: string, children: React.ReactNode }) {
+/* ---- Helper components ---- */
+
+function DocSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="space-y-3">
-      <h4 className="font-bold text-white uppercase tracking-wider text-xs opacity-70">{title}</h4>
-      <div className="flex flex-col space-y-2">
-        {children}
-      </div>
+      <h4 className="font-bold text-white uppercase tracking-wider text-xs opacity-70">
+        {title}
+      </h4>
+      <div className="flex flex-col space-y-2">{children}</div>
     </div>
   );
 }
 
-function DocLink({ href, children }: { href: string, children: React.ReactNode }) {
+function DocLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <a href={href} className="text-gray-400 hover:text-[#00F0FF] transition-colors text-sm">
+    <Link href={href} className="text-gray-400 hover:text-[#00F0FF] transition-colors text-sm">
       {children}
-    </a>
+    </Link>
   );
 }
 
-function Step({ number, title, children }: { number: number, title: string, children: React.ReactNode }) {
+function Step({
+  number,
+  title,
+  children,
+}: {
+  number: number;
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="flex gap-4">
       <div className="flex-shrink-0 h-8 w-8 rounded-full bg-[#00F0FF]/10 text-[#00F0FF] flex items-center justify-center font-bold border border-[#00F0FF]/20">
@@ -150,14 +261,6 @@ function Step({ number, title, children }: { number: number, title: string, chil
         <h4 className="font-bold text-white text-lg mb-2">{title}</h4>
         <div className="text-sm">{children}</div>
       </div>
-    </div>
-  );
-}
-
-function CodeBlock({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="bg-black/50 border border-white/10 rounded p-3 font-mono text-sm text-[#00F0FF]">
-      {children}
     </div>
   );
 }

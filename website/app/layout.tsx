@@ -5,8 +5,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'ScrimFlow - Premium Scrim Manager',
-  description: 'The autonomous Discord bot for tier-1 esports communities.',
+  title: 'ScrimFlow — Premium Discord Bots for Every Community',
+  description: 'We design, build, and deploy powerful Discord bots. Browse our ready-made templates or commission a custom branded bot for your community.',
   icons: {
     icon: '/brand-icon.png',
     shortcut: '/brand-icon.png',

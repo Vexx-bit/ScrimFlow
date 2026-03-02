@@ -185,10 +185,21 @@ export default function DocsPage() {
 
             <div className="p-6 rounded-xl bg-[#12121F] border border-white/10 space-y-4">
               <h3 className="font-bold text-white">Pricing</h3>
+              <p className="text-gray-400 text-sm">Custom bots use a <strong className="text-white">one-time build fee</strong> + an <strong className="text-white">optional monthly hosting fee</strong>:</p>
               <ul className="list-disc pl-5 text-gray-400 space-y-1 text-sm">
-                <li>Basic custom bots start at <strong className="text-white">$149</strong></li>
-                <li>Complex integrations (APIs, databases, dashboards) quoted individually</li>
-                <li>Monthly hosting & support included for the first 3 months</li>
+                <li><strong className="text-white">Starter</strong> (under 50 members) — <strong className="text-[#34D399]">$49</strong> build + $5/mo hosting</li>
+                <li><strong className="text-white">Growth</strong> (50–500 members) — <strong className="text-[#00F0FF]">$99</strong> build + $12/mo hosting</li>
+                <li><strong className="text-white">Enterprise</strong> (500+ members) — <strong className="text-[#C084FC]">From $199</strong> build + $25/mo hosting</li>
+              </ul>
+              <p className="text-gray-500 text-xs">Hosting is optional — you pay once for the build, then only pay monthly if you want us to host &amp; maintain it.</p>
+            </div>
+
+            <div className="p-6 rounded-xl bg-[#12121F] border border-white/10 space-y-4">
+              <h3 className="font-bold text-white">Ownership &amp; Control</h3>
+              <ul className="list-disc pl-5 text-gray-400 space-y-1 text-sm">
+                <li><strong className="text-white">You get:</strong> Full admin control — config, commands, data, branding, and the right to use the bot on any server</li>
+                <li><strong className="text-white">We retain:</strong> Source code ownership (so we can maintain &amp; update it for you)</li>
+                <li><strong className="text-white">Code buyout:</strong> Available if you need full source code ownership for self-hosting</li>
               </ul>
             </div>
           </section>

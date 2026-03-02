@@ -293,30 +293,93 @@ export default function BotsPage() {
       {/* Custom Bot CTA */}
       <section id="custom" className="py-24 border-t border-white/5 bg-[#0B0B16] relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#C084FC]/5 rounded-full blur-[120px] -z-10" />
-        <div className="container mx-auto px-6 text-center max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#C084FC]/30 bg-[#C084FC]/5 text-[#C084FC] text-sm font-medium mb-8">
-            <Sparkles className="h-4 w-4" /> Custom Commissions
+        <div className="container mx-auto px-6 max-w-5xl">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#C084FC]/30 bg-[#C084FC]/5 text-[#C084FC] text-sm font-medium mb-8">
+              <Sparkles className="h-4 w-4" /> Custom Commissions
+            </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
+              Need Something Unique?
+            </h2>
+            <p className="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
+              Our templates are just the beginning. We build fully custom, branded Discord bots tailored to your exact needs — your name, your avatar, your features.
+            </p>
           </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
-            Need Something Unique?
-          </h2>
-          <p className="text-gray-400 text-lg mb-6 leading-relaxed">
-            Our templates are just the beginning. We build fully custom, branded Discord bots tailored to your exact needs — your name, your avatar, your features.
-          </p>
-          <div className="grid sm:grid-cols-3 gap-4 text-left mb-10">
-            <CustomFeature title="Your Branding" desc="Custom name, avatar, status message, and embed theme." />
-            <CustomFeature title="Your Features" desc="We build exactly what you describe — no compromises." />
-            <CustomFeature title="Your Timeline" desc="Most custom bots delivered within 1–2 weeks." />
+
+          {/* Pricing Tiers */}
+          <div className="grid sm:grid-cols-3 gap-6 mb-16">
+            <PricingTier
+              name="Starter"
+              audience="Communities under 50 members"
+              buildFee="$49"
+              hostingFee="$5/mo"
+              color="#34D399"
+              features={[
+                "Up to 5 slash commands",
+                "Basic embed theming",
+                "Your bot name & avatar",
+                "Hosted & monitored 24/7",
+                "Bug fixes included",
+              ]}
+            />
+            <PricingTier
+              name="Growth"
+              audience="Communities of 50–500 members"
+              buildFee="$99"
+              hostingFee="$12/mo"
+              color="#00F0FF"
+              popular
+              features={[
+                "Up to 15 slash commands",
+                "Database & persistent data",
+                "Full branding & embed theme",
+                "Priority support",
+                "Monthly feature updates",
+              ]}
+            />
+            <PricingTier
+              name="Enterprise"
+              audience="Large servers & orgs (500+)"
+              buildFee="From $199"
+              hostingFee="$25/mo"
+              color="#C084FC"
+              features={[
+                "Unlimited commands & features",
+                "API integrations & dashboards",
+                "Multi-server support",
+                "Dedicated support channel",
+                "Custom SLA & uptime guarantee",
+              ]}
+            />
           </div>
-          <p className="text-gray-500 text-sm mb-8">
-            Pricing starts at <strong className="text-white">$149</strong> for a basic custom bot. Complex integrations quoted individually.
-          </p>
-          <Link
-            href="mailto:commissions@scrimflow.gg?subject=Custom Bot Commission"
-            className="inline-flex items-center gap-2 px-10 py-5 bg-[#C084FC] text-black rounded-lg font-bold hover:bg-[#a855f7] transition-all shadow-[0_0_20px_rgba(192,132,252,0.3)] text-lg"
-          >
-            Start Your Commission <ArrowRight className="h-5 w-5" />
-          </Link>
+
+          {/* How it works */}
+          <div className="grid sm:grid-cols-3 gap-4 text-left mb-12">
+            <CustomFeature title="One-Time Build Fee" desc="You pay once for development. The bot is built to your spec and yours to keep using." />
+            <CustomFeature title="Optional Monthly Hosting" desc="We host, monitor, and update your bot 24/7. Cancel anytime — no lock-in." />
+            <CustomFeature title="You Control Everything" desc="Full admin over your bot's config, commands, and data. We handle the code & infra." />
+          </div>
+
+          {/* Ownership note */}
+          <div className="p-6 rounded-xl bg-[#12121F] border border-white/10 mb-12 text-sm text-gray-400 leading-relaxed">
+            <h4 className="font-bold text-white mb-2">🔒 Who owns what?</h4>
+            <p className="mb-2">
+              <strong className="text-white">You own:</strong> full admin control of your bot — configuration, commands, data, branding, and the right to use it on any server you choose. You can transfer it, rebrand it, or shut it down at any time.
+            </p>
+            <p>
+              <strong className="text-white">We retain:</strong> ownership of the underlying source code and framework (so we can maintain, patch, and update it). Think of it like a license — you get a fully functional, branded product; we keep the engine running under the hood. If you need full source code ownership, we offer a <strong className="text-white">code buyout</strong> option — just ask.
+            </p>
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="mailto:commissions@scrimflow.gg?subject=Custom Bot Commission"
+              className="inline-flex items-center gap-2 px-10 py-5 bg-[#C084FC] text-black rounded-lg font-bold hover:bg-[#a855f7] transition-all shadow-[0_0_20px_rgba(192,132,252,0.3)] text-lg"
+            >
+              Start Your Commission <ArrowRight className="h-5 w-5" />
+            </Link>
+            <p className="text-gray-600 text-xs mt-4">We respond within 24 hours. No payment until you approve the scope.</p>
+          </div>
         </div>
       </section>
 
@@ -326,6 +389,60 @@ export default function BotsPage() {
 }
 
 /* ---- Sub-components ---- */
+
+function PricingTier({
+  name,
+  audience,
+  buildFee,
+  hostingFee,
+  color,
+  features,
+  popular,
+}: {
+  name: string;
+  audience: string;
+  buildFee: string;
+  hostingFee: string;
+  color: string;
+  features: string[];
+  popular?: boolean;
+}) {
+  return (
+    <div
+      className={`relative p-6 rounded-2xl bg-[#12121F] border transition-all ${
+        popular ? "border-[#00F0FF]/40 shadow-[0_0_30px_rgba(0,240,255,0.08)]" : "border-white/5"
+      }`}
+    >
+      {popular && (
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#00F0FF] text-black text-xs font-bold">
+          Most Popular
+        </div>
+      )}
+      <h3 className="text-xl font-bold mb-1" style={{ color }}>
+        {name}
+      </h3>
+      <p className="text-gray-500 text-xs mb-5">{audience}</p>
+
+      <div className="mb-1">
+        <span className="text-2xl font-extrabold text-white">{buildFee}</span>
+        <span className="text-gray-500 text-sm ml-1">one-time build</span>
+      </div>
+      <div className="mb-5">
+        <span className="text-lg font-bold text-white">{hostingFee}</span>
+        <span className="text-gray-500 text-sm ml-1">hosting &amp; support</span>
+      </div>
+
+      <ul className="space-y-2 text-sm">
+        {features.map((f, i) => (
+          <li key={i} className="flex items-start gap-2 text-gray-300">
+            <Check className="h-4 w-4 mt-0.5 flex-shrink-0" style={{ color }} />
+            {f}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 function CustomFeature({ title, desc }: { title: string; desc: string }) {
   return (

@@ -24,9 +24,15 @@ export default function TermsPage() {
         <h2 className="text-xl font-bold mt-10 mb-4">3. Subscriptions & Payments</h2>
         <ul className="list-disc pl-5 space-y-2">
           <li>Template bots are offered on a monthly subscription basis. Prices are listed on the <Link href="/bots" className="text-[#00F0FF] hover:underline">Bots page</Link>.</li>
-          <li>Custom bot commissions require a one-time payment (or milestone-based payments for larger projects), quoted before work begins.</li>
+          <li><strong>Custom bot commissions</strong> consist of two parts:
+            <ul className="list-disc pl-5 mt-1 space-y-1">
+              <li>A <strong>one-time build fee</strong> covering development and delivery of your bot.</li>
+              <li>An <strong>optional monthly hosting &amp; support fee</strong> if you want ScrimFlow to host, monitor, and maintain the bot on your behalf. You may cancel hosting at any time.</li>
+            </ul>
+          </li>
           <li>All prices are in USD unless stated otherwise.</li>
           <li>Subscriptions auto-renew unless cancelled before the next billing date.</li>
+          <li>If you cancel hosting, the bot will stop functioning at the end of the current billing period unless you arrange self-hosting.</li>
         </ul>
 
         <h2 className="text-xl font-bold mt-10 mb-4">4. Refund Policy</h2>
@@ -43,10 +49,15 @@ export default function TermsPage() {
           <li>Overload our infrastructure (e.g., deliberate API abuse).</li>
         </ul>
 
-        <h2 className="text-xl font-bold mt-10 mb-4">6. Intellectual Property</h2>
+        <h2 className="text-xl font-bold mt-10 mb-4">6. Intellectual Property &amp; Ownership</h2>
         <p>
-          All ScrimFlow bots, code, branding, and website content are the intellectual property of ScrimFlow. Custom bot commissions grant the client a license to use the delivered bot, but the underlying codebase and framework remain ScrimFlow&apos;s property unless otherwise agreed in writing.
+          All ScrimFlow bots, code, branding, and website content are the intellectual property of ScrimFlow.
         </p>
+        <ul className="list-disc pl-5 space-y-2 mt-4">
+          <li><strong>What you own:</strong> Full administrative control of your commissioned bot — its configuration, commands, stored data, branding (name, avatar, embed theme), and the right to run it on any Discord server you choose. You may transfer, rebrand, or shut down the bot at any time.</li>
+          <li><strong>What we retain:</strong> Ownership of the underlying source code and framework. This allows us to maintain, patch, and update the bot on your behalf. You receive a perpetual license to <em>use</em> the bot, but not to redistribute or resell the code.</li>
+          <li><strong>Code buyout:</strong> If you require full source code ownership (e.g., to self-host or modify independently), a code buyout option is available at an additional cost. Contact us for details.</li>
+        </ul>
 
         <h2 className="text-xl font-bold mt-10 mb-4">7. Uptime & Liability</h2>
         <p>
